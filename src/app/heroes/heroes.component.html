@@ -8,12 +8,5 @@
   </li>
 </ul>
 
-<div *ngIf="selectedHero">
-    <!--Pipes are a good way to format strings, currency amounts, dates, and other display data-->
-    <h2>{{selectedHero.name | uppercase}} Details</h2>
-    <div>id: {{selectedHero.id}}</div>
-    <div>
-      <label for="hero-name">Hero name: </label>
-      <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
-    </div>
-</div>
+<!--It's a one-way data binding from the selectedHero property of the HeroesComponent to the hero property of the target element, which maps to the hero property of the HeroDetailComponent.-->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
