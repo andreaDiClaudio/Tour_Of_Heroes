@@ -13,13 +13,20 @@ import { MessageService } from './message.service';
 
 export class HeroService {
 
+
   getHeroes(): Observable<Hero[]> {
-
-    //of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes.
     const heroes = of(HEROES);
-
     this.messageService.add('HeroService: fetched heroes');
     return heroes;
+  }
+
+  getHero(id: number): Observable<Hero> {
+
+    //of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes.
+    const hero = HEROES.find(h => h.id === id)!;
+
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(hero);
   }
 
   //This is an example of a typical service-in-service scenario in which you inject the MessageService into the HeroService which is injected into the HeroesComponent.
