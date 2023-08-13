@@ -77,6 +77,15 @@ export class HeroService {
     );
   }
 
+  /** DELETE: delete the hero from the server */
+  deleteHero(id: number): Observable<Hero> {
+    const url = `${this.heroesUrl}/${id}`;
+
+    return this.http.delete<Hero>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Hero>('deleteHero'))
+    );
+  }
   //This is an example of a typical service-in-service scenario in which you inject the MessageService into the HeroService which is injected into the HeroesComponent.
   constructor(private http: HttpClient,
     private messageService: MessageService) { }
