@@ -45,4 +45,5 @@ export class HeroDetailComponent {
         .subscribe(() => this.goBack());
     }
   }
+
 }
